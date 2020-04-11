@@ -11,19 +11,37 @@ TWIL_NUMBER = os.environ['TWIL_NUMBER']
 TWIL_EXAMPLE_NUMBER = os.environ['TWIL_EXAMPLE_NUMBER']
 EMERGENCY_PIN = os.environ['EMERGENCY_PIN']
 EMERGENCY_INFORMATION = os.environ['EMERGENCY_INFORMATION']
-SAMPLE_INFORMATION = {}
+NAME = os.environ['NAME']
+
 
 # Global variables
 
 CLIENT = Client(ACCOUNT_SID, AUTH_TOKEN)
+SAMPLE_INFORMATION = {
+    'meds': [
+        ('Med A', 'Notes for A'),
+        ('Med B', 'Notes for B'),
+        ('Med C', 'Notes for C'),
+    ],
+    'details': [
+        ('Blood type', 'Blood type here'),
+        ('Allergies', 'List of Allergies'),
+        ('Other information', 'Conditions and/or additional information'),
+    ],
+    'contacts': [
+        ('Contact D', 'Contact D phone number'),
+        ('Contact E', 'Contact E phone number'),
+        ('Contact F', 'Contact F phone number'),
+    ],
+    'hire': [
+        ("Hayley is looking for her next opportunity",),
+        ("Hire her for Developer Advocacy, Technical Content Writing, or Python Development",),
+        ('Contact her @hayleydenb on Twitter, or find further information at https://dev.to/hayleydenb'),
+    ],
+}
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
-    is_sample = sample_or_real(req)
-
-    if is_sample:
-        run_sample_workflow(req)
-    else:
-        run_workflow(req)
+    emergency_info = SAMPLE_INFORMATION if is_sample(req) else EMERGENCY_INFORMATION
 
     logging.info('Python HTTP trigger function processed a request.')
 
