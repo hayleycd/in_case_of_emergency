@@ -13,7 +13,6 @@ EMERGENCY_PIN = os.environ["EMERGENCY_PIN"]
 SAMPLE_PIN = os.environ["SAMPLE_PIN"]
 EMERGENCY_INFORMATION = os.environ["EMERGENCY_INFORMATION"]
 NAME = os.environ["NAME"]
-test = "pep8"
 
 
 # Global variables
