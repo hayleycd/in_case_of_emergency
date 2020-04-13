@@ -1,4 +1,5 @@
 import logging
+import os
 
 import azure.functions as func
 from twilio.rest import Client
