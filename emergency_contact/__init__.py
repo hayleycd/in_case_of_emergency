@@ -53,6 +53,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     # These variables help construct the proper outgoing messages.
     is_sample = is_sample(req)
     emergency_info = SAMPLE_INFORMATION if is_sample else EMERGENCY_INFORMATION
+    PIN = SAMPLE_PIN if is_sample else EMERGENCY_PIN
+    body = incoming_message.strip().lower()
 
     # This logs incoming text. 
     logging.info(log_incoming_text(is_sample, send_to)
@@ -84,9 +86,6 @@ def security_check_and_workflow(send_to, send_from, incoming_message, is_sample)
     if is_sample == None:
         logging.info(f"Request was sent to an unauthorized number {send_to}")
         return func.HttpResponse(f"The request was sent to an unauthorized number")
-
-    PIN = SAMPLE_PIN if is_sample else EMERGENCY_PIN
-    body = incoming_message.strip().lower()
 
     if body == PIN:
         send_initial_text(req, send_to, send_from, is_sample)
