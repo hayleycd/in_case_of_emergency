@@ -36,12 +36,14 @@ SAMPLE_INFORMATION = {
         ("Contact F: ", "Contact F phone number"),
     ],
     "shameless": [
-        ("Hayley Denbraver is looking for her next opportunity.",""),
+        ("Hayley Denbraver is looking for her next opportunity.", ""),
         (
-            "Hire her for Developer Advocacy, Technical Content Writing, or Python Development.", ""
+            "Hire her for Developer Advocacy, Technical Content Writing, or Python Development.",
+            "",
         ),
         (
-            "Contact her @hayleydenb on Twitter, or find her at https://dev.to/hayleydenb or https://www.linkedin.com/in/hayleydenbraverpe", ""
+            "Contact her @hayleydenb on Twitter, or find her at https://dev.to/hayleydenb or https://www.linkedin.com/in/hayleydenbraverpe",
+            "",
         ),
     ],
 }
@@ -61,7 +63,9 @@ def log_incoming_text(is_sample, send_to):
     return f"{sample_or_emergency} information was requested from {send_to}"
 
 
-def security_check_and_workflow(PIN, send_to, send_from, incoming_message, is_sample, emergency_info):
+def security_check_and_workflow(
+    PIN, send_to, send_from, incoming_message, is_sample, emergency_info
+):
 
     if is_sample == None:
         logging.info(f"Request was sent to an unauthorized number {send_from}")
@@ -93,15 +97,14 @@ def send_initial_text(send_to, send_from, is_sample):
 
     if is_sample:
         outgoing_message = (
-            outgoing_message + "\n\n- Text 'shameless' for details on how to hire Hayley."
+            outgoing_message
+            + "\n\n- Text 'shameless' for details on how to hire Hayley."
         )
 
     send_message(outgoing_message, send_to, send_from)
 
 
-def send_follow_up_text(
-    send_to, send_from, incoming_message, emergency_info
-):
+def send_follow_up_text(send_to, send_from, incoming_message, emergency_info):
     if incoming_message in emergency_info.keys():
         info_to_send = emergency_info[incoming_message]
         message = generate_message_from_emergency_info(info_to_send)
@@ -114,11 +117,13 @@ def send_message(outgoing_message, send_to, send_from):
     message = CLIENT.messages.create(
         body=outgoing_message, from_=send_from, to=send_to,
     )
-    return func.HttpResponse("You can text this number again if you need more information.", status_code=200)
+    return func.HttpResponse(
+        "You can text this number again if you need more information.", status_code=200
+    )
+
 
 def generate_message_from_emergency_info(info_to_send):
     outgoing_message = ""
     for each in info_to_send:
         outgoing_message = outgoing_message + each[0] + each[1] + "\n\n"
     return outgoing_message
-    

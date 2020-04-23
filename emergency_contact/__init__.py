@@ -14,11 +14,19 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
     # These variables help construct the proper outgoing messages.
     is_sample = helper.is_sample(send_from)
-    emergency_info = helper.SAMPLE_INFORMATION if is_sample else helper.EMERGENCY_INFORMATION
+    emergency_info = (
+        helper.SAMPLE_INFORMATION if is_sample else helper.EMERGENCY_INFORMATION
+    )
     pin = helper.SAMPLE_PIN if is_sample else helper.EMERGENCY_PIN
 
     # This logs incoming text.
     logging.info(helper.log_incoming_text(is_sample, send_to))
 
     # This kicks off the logic
-    helper.security_check_and_workflow(pin, send_to, send_from, incoming_message, is_sample, emergency_info)
+    helper.security_check_and_workflow(
+        pin, send_to, send_from, incoming_message, is_sample, emergency_info
+    )
+
+    return func.HttpResponse(
+        "You can text this number again if you need more information.", status_code=200
+    )
