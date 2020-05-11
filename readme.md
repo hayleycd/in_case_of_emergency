@@ -56,9 +56,15 @@ Could you use something like this in your life? You can get your own. You will n
 
 ![The screenshot shows what it looks like to find the Azure function extension in VS Code.](https://raw.githubusercontent.com/hayleycd/in_case_of_emergency/master/pictures/detectsazure.png)
 
-- Open the file containing the repository that you cloned and pulled down from my GitHub. VS Code should detect that you have a Azure function application. Follow any prompts that it may give you. The Azure Functions extension has some pretty good documentation to help guide you. 
+- Authenticate your Azure account in VS Code. Once you have installed the Azure Functions extension, you should see a notification that will help you through the process. Now your VS Code install and your Azure account are connected. 
+- Create a new Azure Function App through the Azure Portal in your webbrowser. 
+- The defaults should be sufficient, though check your region.
+- Once you feel good abou the settings, deploy! Azure will take a minute to deploy your app. 
+- In VS Code, open the file containing the repository that you cloned and pulled down from my GitHub. VS Code should detect that you have a Azure function application. Follow any prompts that it may give you. 
 
 ![The Azure Function extension will detect when have opened a folder that has an Azure Function application.](https://raw.githubusercontent.com/hayleycd/in_case_of_emergency/master/pictures/detectsfunction.png)
+
+- 
 
 
 ### Twilio account and phone number
