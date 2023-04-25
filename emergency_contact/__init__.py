@@ -1,9 +1,25 @@
 import logging
+import os
 import __app__.helper as helper
 
 import azure.functions as func
+import sentry_sdk
+from sentry_sdk.integrations.serverless import serverless_function
 
+# Environment variable
+SENTRY = os.environ["SENTRY_DSN"]
 
+# Sentry
+sentry_sdk.init(
+    dsn=SENTRY,
+
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0,
+)
+
+@serverless_function
 def main(req: func.HttpRequest) -> func.HttpResponse:
 
     # This determines what phone number is texting my twilio number and whether they are texting my sample or emergency number.

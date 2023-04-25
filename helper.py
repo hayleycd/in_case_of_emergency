@@ -2,7 +2,6 @@ import logging
 import os
 import json
 
-import sentry_sdk
 import azure.functions as func
 from twilio.rest import Client
 
@@ -16,17 +15,6 @@ EMERGENCY_PIN = os.environ["EMERGENCY_PIN"]
 SAMPLE_PIN = os.environ["SAMPLE_PIN"]
 EMERGENCY_INFORMATION = json.loads(os.environ["EMERGENCY_INFORMATION"])
 NAME = os.environ["NAME"]
-SENTRY = os.environ["SENTRY_DSN"]
-
-# Sentry
-sentry_sdk.init(
-    dsn=SENTRY,
-
-    # Set traces_sample_rate to 1.0 to capture 100%
-    # of transactions for performance monitoring.
-    # We recommend adjusting this value in production.
-    traces_sample_rate=1.0,
-)
 
 # Global variables
 
@@ -58,8 +46,10 @@ SAMPLE_INFORMATION = {
             "",
         ),
     ],
+    "error": [
+        ("Let me trigger an error for you. Check Sentry!", ""),
+    ],
 }
-
 
 def is_sample(send_from):
     if send_from == TWIL_EXAMPLE_NUMBER:
@@ -69,11 +59,9 @@ def is_sample(send_from):
     else:
         return None
 
-
 def log_incoming_text(is_sample, send_to):
     sample_or_emergency = "Sample" if is_sample else "Emergency"
     return f"{sample_or_emergency} information was requested from {send_to}"
-
 
 def security_check_and_workflow(
     PIN, send_to, send_from, incoming_message, is_sample, emergency_info
@@ -98,7 +86,6 @@ def security_check_and_workflow(
         else:
             send_message("See ID for instructions", send_to, send_from)
 
-
 def send_initial_text(send_to, send_from, is_sample):
     outgoing_message = f"""You have requested {NAME}'s emergency information.
     - Text 'contacts' for {NAME}'s emergency contacts.
@@ -111,19 +98,19 @@ def send_initial_text(send_to, send_from, is_sample):
         outgoing_message = (
             outgoing_message
             + "\n\n- Text 'shameless' for details on how to hire Hayley."
+            + "\n\n- Text 'error' to trigger an error"
         )
 
     send_message(outgoing_message, send_to, send_from)
-
 
 def send_follow_up_text(send_to, send_from, incoming_message, emergency_info):
     if incoming_message in emergency_info.keys():
         info_to_send = emergency_info[incoming_message]
         message = generate_message_from_emergency_info(info_to_send)
         send_message(message, send_to, send_from)
+        throw_an_error(incoming_message)
     else:
         send_initial_text(send_to, send_from, is_sample)
-
 
 def send_message(outgoing_message, send_to, send_from):
     message = CLIENT.messages.create(
@@ -133,9 +120,12 @@ def send_message(outgoing_message, send_to, send_from):
         "You can text this number again if you need more information.", status_code=200
     )
 
-
 def generate_message_from_emergency_info(info_to_send):
     outgoing_message = ""
     for each in info_to_send:
         outgoing_message = outgoing_message + each[0] + each[1] + "\n\n"
     return outgoing_message
+
+def throw_an_error(incoming_message):
+    if incoming_message == "error":
+        1/0
