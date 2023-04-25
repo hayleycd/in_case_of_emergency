@@ -2,6 +2,7 @@ import logging
 import os
 import json
 
+import sentry_sdk
 import azure.functions as func
 from twilio.rest import Client
 
@@ -15,6 +16,17 @@ EMERGENCY_PIN = os.environ["EMERGENCY_PIN"]
 SAMPLE_PIN = os.environ["SAMPLE_PIN"]
 EMERGENCY_INFORMATION = json.loads(os.environ["EMERGENCY_INFORMATION"])
 NAME = os.environ["NAME"]
+SENTRY = os.environ["SENTRY_DSN"]
+
+# Sentry
+sentry_sdk.init(
+    dsn=SENTRY,
+
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0,
+)
 
 # Global variables
 
