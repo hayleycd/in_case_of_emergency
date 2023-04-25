@@ -1,0 +1,41 @@
+title: In Case of Emergency
+
+baseurl: "/in_case_of_emergency" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+github_username:  hayleycd
+heading_anchors: true
+
+# Build settings
+remote_theme: just-the-docs/just-the-docs
+plugins:
+  - jekyll-feed
+
+markdown: kramdown
+
+logo: "/assets/images/cover.png"
+
+callouts_level: quiet # or loud
+callouts:
+  highlight:
+    color: yellow
+  important:
+    title: Important
+    color: blue
+  new:
+    title: New
+    color: green
+  note:
+    title: Note
+    color: purple
+  warning:
+    title: Warning
+    color: red
+
+aux_links:
+  "GitHub Repository":
+    - https://github.com/hayleycd/in_case_of_emergency
+
+nav_external_links:
+  - title: Dev.to Blog Post
+    url: https://dev.to/hayleydenb/flexible-and-extensible-emergency-contact-information-with-twilio-and-azure-functions-kom
+    hide_icon: false # set to true to hide the external link icon - defaults to false
