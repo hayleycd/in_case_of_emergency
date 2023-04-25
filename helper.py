@@ -57,7 +57,7 @@ def is_sample(send_from):
     elif send_from == TWIL_NUMBER:
         return False
     else:
-        return None
+        raise Exception("Bad phone number detected.")
 
 def log_incoming_text(is_sample, send_to):
     sample_or_emergency = "Sample" if is_sample else "Emergency"
