@@ -42,7 +42,7 @@ SAMPLE_INFORMATION = {
             "",
         ),
         (
-            "Contact her @hayleydenb on Twitter, or find her at https://dev.to/hayleydenb or https://www.linkedin.com/in/hayleydenbraverpe",
+            "Contact her @hayleydenb on Twitter, or at hayley.denbraver@gmail.com",
             "",
         ),
     ],
