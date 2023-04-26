@@ -57,8 +57,10 @@ def is_sample(send_from):
     elif send_from == TWIL_NUMBER:
         return False
     else:
-        raise Exception("Bad phone number detected.")
-
+        warning = f"Request was sent to an unauthorized number {send_from}"
+        logging.info(warning)
+        raise Exception(warning)
+    
 def log_incoming_text(is_sample, send_to):
     sample_or_emergency = "Sample" if is_sample else "Emergency"
     return f"{sample_or_emergency} information was requested from {send_to}"
@@ -66,10 +68,6 @@ def log_incoming_text(is_sample, send_to):
 def security_check_and_workflow(
     PIN, send_to, send_from, incoming_message, is_sample, emergency_info
 ):
-
-    if is_sample == None:
-        logging.info(f"Request was sent to an unauthorized number {send_from}")
-        return func.HttpResponse("Forbidden", status_code=403)
 
     if incoming_message.strip() == PIN:
         send_initial_text(send_to, send_from, is_sample)
