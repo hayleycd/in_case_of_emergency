@@ -94,8 +94,9 @@ The trickiest environment variable is EMERGENCY_INFORMATION. It can be long and,
     }
 
 When you are done adding variables, you will need to save them before they will be applied to your function. 
-
+<!-- markdown-link-check-disable -->
 ### Let me know!
 
 If you give the above a try, please let me know. I would love to hear from you and can be contacted most readily on [Twitter](https://www.twitter.com/hayleydenb).
+<!-- markdown-link-check-enable -->
 
