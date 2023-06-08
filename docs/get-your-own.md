@@ -97,4 +97,4 @@ When you are done adding variables, you will need to save them before they will 
 
 ### Let me know!
 
-If you give the above a try, please let me know. I would love to hear from you and can be contacted most readily on [Twitter](twitter.com/hayleydenb).
+If you give the above a try, please let me know. I would love to hear from you and can be contacted most readily on [Twitter](https://www.twitter.com/hayleydenb).
