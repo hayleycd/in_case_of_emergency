@@ -7,7 +7,7 @@ nav_order: 1
 ![In Case of Emergency Logo](assets/images/cover.png) 
 
 {: .note }
-This project is no longer deployed. you will not be able to try it for yourself. It is now only a writing and code sample. 
+This project is no longer deployed. It is now only a writing and code sample. You will not be able to text the sample line. 
 
 
 ## My application
