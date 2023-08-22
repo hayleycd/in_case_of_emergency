@@ -4,6 +4,10 @@ title: Security
 permalink: /security/
 nav_order: 5
 ---
+
+{: .note }
+This project is no longer deployed. It is now only a writing and code sample. You will not be able to text the sample line. 
+
 ## A parting word on security
 
 Some real talk--this application strikes a balance between making sure information is accessible in an emergency and risking exposure of private information. I have done a number of things to protect my privacy, but if you spin up your own version, you need to consider what you are comfortable with. 
