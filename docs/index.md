@@ -6,6 +6,10 @@ nav_order: 1
 
 ![In Case of Emergency Logo](assets/images/cover.png) 
 
+{: .note }
+This project is no longer deployed. you will not be able to try it for yourself. It is now only a writing and code sample. 
+
+
 ## My application
 
 Introducing _In Case of Emergency_, the Twilio app that makes it easy to keep emergency contact information up to date! I can also customize my information, making sure not to leave out anything
