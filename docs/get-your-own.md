@@ -4,6 +4,10 @@ title: Implementation
 permalink: /implementation/
 nav_order: 4
 ---
+
+{: .note }
+This project is no longer deployed. It is now only a writing and code sample. You will not be able to text the sample line. 
+
 ## Implementation
 
 {: .important }
