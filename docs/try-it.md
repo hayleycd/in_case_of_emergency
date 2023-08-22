@@ -4,6 +4,10 @@ title: Try it yourself
 permalink: /try-it/
 nav_order: 2
 ---
+
+{: .note }
+This project is no longer deployed. It is now only a writing and code sample. You will not be able to text the sample line. 
+
 ## Try it out!
 
 I want to demonstrate my project, but I _do not_ want y'all to have access to my medical details or my emergency contacts. Boundaries are healthy.
