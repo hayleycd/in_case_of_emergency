@@ -5,6 +5,9 @@ permalink: /event-flow/
 nav_exclude: True
 ---
 
+{: .note }
+This project is no longer deployed. It is now only a writing and code sample. You will not be able to text the sample line. 
+
 ## Event flow
 
 This is a step by step peek into how the _In Case of Emergency_ app works. 
