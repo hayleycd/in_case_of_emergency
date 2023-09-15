@@ -1,3 +1,4 @@
 azure-functions
 twilio
 sentry-sdk
+requests==2.18.4
