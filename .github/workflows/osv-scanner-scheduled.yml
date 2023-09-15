@@ -1,0 +1,16 @@
+name: osv-scanner
+
+on:
+  schedule:
+    - cron: '10 16 * * 5'
+  push:
+    branches: [ "main" ]
+
+# Declare default permissions as read only.
+permissions: 
+  security-events: write
+  contents: read
+
+jobs:
+  scan-pr-attempt:
+    uses: "google/osv-scanner/.github/workflows/osv-scanner-reusable-scheduled.yml@main"
