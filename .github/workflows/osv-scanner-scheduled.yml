@@ -2,7 +2,7 @@ name: osv-scanner
 
 on:
   schedule:
-    - cron: '20 18 * * 2'
+    - cron: '37 22 * * 2'
   push:
     branches: [ "main" ]
 
@@ -17,3 +17,4 @@ jobs:
     with:
       scan-args: |-
         -r
+        ./
