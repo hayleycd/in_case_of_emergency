@@ -2,7 +2,7 @@ name: osv-scanner
 
 on:
   schedule:
-    - cron: '10 16 * * 5'
+    - cron: '17 20 * * 2'
   push:
     branches: [ "main" ]
 
@@ -14,3 +14,6 @@ permissions:
 jobs:
   scan-pr-attempt:
     uses: "google/osv-scanner/.github/workflows/osv-scanner-reusable-scheduled.yml@main"
+    with:
+      scan-args: |-
+      -r
