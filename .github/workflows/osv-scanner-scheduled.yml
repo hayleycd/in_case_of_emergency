@@ -2,9 +2,9 @@ name: osv-scanner
 
 on:
   schedule:
-    - cron: '55 22 * * 2'
+    - cron: '25 20 * * 4'
   push:
-    branches: [ "main" ]
+    branches: [ main ]
 
 # Declare default permissions as read only.
 permissions: 
